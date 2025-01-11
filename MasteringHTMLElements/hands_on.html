@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+          sans-serif;
+      }
+
+      body {
+        padding: 40px;
+      }
+
+      table,
+      th,
+      td,
+      tr {
+        border: 1px solid #888888;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 4px 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- List -->
+      <section>
+        <h2>List (Ordered and Unordered List)</h2>
+        <div>
+          <h3>1. Ordered List</h3>
+          <h4>Fast and Furious Movies <b>(2001 - 2023)</b></h4>
+          <ol type="1">
+            <li>The Fast and The Furious <b>(2001)</b></li>
+            <li>2 Fast 2 Furious <b>(2003)</b></li>
+            <li>The Fast and The Furious: Tokyo Drift <b>(2006)</b></li>
+            <li>Fast & Furious <b>(2009)</b></li>
+            <li>Fast Five <b>(2011)</b></li>
+            <li>Fast & Furious 6 <b>(2013)</b></li>
+            <li>Furious 7 <b>(2015)</b></li>
+            <li>The Fate and The Furious <b>(2017)</b></li>
+            <li>Fast & Furious Presents: Hobbs & Shaw <b>(2019)</b></li>
+            <li>F9 <b>(2021)</b></li>
+            <li>Fast X <b>(2023)</b></li>
+          </ol>
+        </div>
+        <div>
+          <h3>2. Unordered List</h3>
+          <h4>Fruits with a lot of Vitamin A</h4>
+          <ul>
+            <li>Mango</li>
+            <li>Guava</li>
+            <li>Watermelon</li>
+            <li>Grapefruit</li>
+            <li>Papaya</li>
+          </ul>
+        </div>
+        <div>
+          <h3>3. Nested List</h3>
+          <h4>Aktivitas yang akan saya lakukan di minggu ini</h4>
+          <ol type="1">
+            <li>
+              <p>Senin</p>
+              <ul>
+                <li>Melakukan jogging pagi sebelum berangkat ke kantor</li>
+                <li>Membersihkan ruang tamu dan ruang makan</li>
+                <li>
+                  <span>Memulai mengerjakan website portfolio</span>
+                  <ol type="a">
+                    <li>Research design website dari internet</li>
+                    <li>Membuat design sketch sederhana</li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span>Selasa</span>
+              <ul>
+                <li>Pergi ke gym setelah selesai bekerja di kantor</li>
+                <li>Melanjutkan mengerjakan website portfolio</li>
+              </ul>
+            </li>
+            <li>
+              <span>Rabu</span>
+              <ul>
+                <li>Bekerja dari rumah (WFH)</li>
+                <li>Membersihkan kamar mandi dan ruang tidur</li>
+                <li>Belajar materi web development mengenai basic React Js</li>
+              </ul>
+            </li>
+            <li>
+              <span>Kamis</span>
+              <ul>
+                <li>Bekerja dari cafe bersama rekan kerja (WFC)</li>
+                <li>
+                  Melanjutkan materi web development mengenai basic React Js
+                </li>
+                <li>Bermain game di PC sebelum tidur</li>
+              </ul>
+            </li>
+            <li>
+              <span>Jum'at</span>
+              <ul>
+                <li>Bermain futsal bersama teman-teman</li>
+                <li>
+                  Menyelesaikan materi basic React Js, dan melanjutkan
+                  mengerjakan website portfolio
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span>Sabtu</span>
+              <ul>
+                <li>Hang out bersama teman-teman</li>
+                <li>Menonton netflix dan bermain game sebelum tidur</li>
+              </ul>
+            </li>
+            <li>
+              <span>Minggu</span>
+              <ul>
+                <li>Beristirahat dan menonton netflix</li>
+                <li>Prepare untuk bekerja di hari senin</li>
+                <li>Menyelesaikan portfolio website</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <br />
+      <hr />
+      <br />
+      <!-- Form -->
+      <section>
+        <h2>Form Registrasi Mahasiswa Fakultas Ilmu Komputer</h2>
+        <img
+          src="../assets/hands_on_material_2/university.jpg"
+          alt="university-photo"
+          width="300"
+          height="150"
+        />
+        <form action="#" method="POST" target="_self">
+          <!-- Full Name Input -->
+          <div>
+            <label for="nama-lengkap">Nama lengkap: </label><br />
+            <input
+              type="text"
+              name="nama-lengkap"
+              id="nama-lengkap"
+              placeholder="Masukkan nama lengkap..."
+            />
+          </div>
+          <br />
+          <!-- Date Of Birth Input -->
+          <div>
+            <label for="tanggal-lahir">Tanggal lahir </label><br />
+            <input type="date" name="tanggal-lahir" id="tanggal-lahir" />
+          </div>
+          <br />
+          <!-- Majority Input -->
+          <div>
+            <span>Pilih jurusan mahasiswa</span><br />
+            <div>
+              <input
+                type="radio"
+                name="sistem-komputer"
+                id="sistem-komputer"
+                value="sistem-komputer"
+              />
+              <label for="sistem-komputer">Sistem Komputer</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="sistem-informasi"
+                id="sistem-informasi"
+                value="sistem-informasi"
+              />
+              <label for="sistem-informasi">Sistem Informasi</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="teknik-informatika"
+                id="teknik-informatika"
+                value="teknik-informatika"
+              />
+              <label for="teknik-informatika">Teknik Informatika</label>
+            </div>
+          </div>
+          <br />
+          <!-- Student ID Card Photo -->
+          <div>
+            <span
+              >Lampirkan ID Card Mahasiswa <b>(*.jpg, *.png, *.jpeg)</b></span
+            ><br />
+            <input
+              type="file"
+              name="std-id-card-photo"
+              id="std-id-card-photo"
+            />
+          </div>
+          <br />
+          <!-- Concentrated Fields -->
+          <div>
+            <span>Pilih bidang yang ingin ditekuni <b>(maksimum 3)</b></span
+            ><br />
+            <div>
+              <input
+                type="checkbox"
+                name="web-dev"
+                id="web-dev"
+                value="web-dev"
+              />
+              <label for="web-dev">Web Development</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="app-dev"
+                id="app-dev"
+                value="app-dev"
+              />
+              <label for="app-dev">Application Development</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="artificial-intelligence"
+                id="artificial-intelligence"
+                value="artificial-intelligence"
+              />
+              <label for="artificial-intelligence"
+                >Artificial Intelligence</label
+              >
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="data-science-data-analytics"
+                id="data-science-data-analytics"
+                value="data-science-data-analytics"
+              />
+              <label for="data-science-data-analytics"
+                >Data Science & Data Analytics</label
+              >
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="ui-ux-design"
+                id="ui-ux-design"
+                value="ui-ux-design"
+              />
+              <label for="ui-ux-design">UI / UX Design</label>
+            </div>
+          </div>
+          <br />
+          <!-- Additional Message -->
+          <div>
+            <label for="additional-message"
+              >Sebutkan alasan memilih bidang tersebut</label
+            ><br />
+            <textarea
+              name="additional-message"
+              id="additional-message"
+              placeholder="Masukkan alasan memilih bidang..."
+              cols="50"
+              rows="5"
+            ></textarea>
+          </div>
+          <br />
+          <!-- Button Submit -->
+          <button type="submit" id="submit-btn">Submit Form</button>
+        </form>
+      </section>
+      <br />
+      <hr />
+      <br />
+      <!-- Table -->
+      <section>
+        <h2>Tabel Data Mahasiswa</h2>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>Student Id</th>
+                <th>Nama lengkap</th>
+                <th>Jurusan</th>
+                <th>Bidang konsentrasi</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Nick Adam</td>
+                <td>Sistem Informasi</td>
+                <td>
+                  UI/UX & Product Design, Artificial Intelligence, Web
+                  Development
+                </td>
+                <td>
+                  <button type="button" id="remove-data-btn">
+                    Remove Data
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Xi Shin Quan</td>
+                <td>Teknik Informatika</td>
+                <td>Web Development, App Development</td>
+                <td>
+                  <button type="button" id="remove-data-btn">
+                    Remove Data
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Ben Johnson</td>
+                <td>Sistem Komputer</td>
+                <td>
+                  Web Development, Artifical Intelligence, Data Science & Data
+                  Analytics
+                </td>
+                <td>
+                  <button type="button" id="remove-data-btn">
+                    Remove Data
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
