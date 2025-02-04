@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            padding-bottom: 20px;
+        }
+
+        section, hr {
+            margin-left: 20px;
+        }
+
+        tr, th, td{
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        tr {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <section>
+        <h1 style="font-size: 40px;">Tentang Perusahaan Kami</h1>
+        <img src="./images/about_company_profile.jpg" alt="company pic">
+        <p>Rhoncus eget ut lacus sed euismod id cras enim eu. Lobortis integer at mi eget. Tellus a elementum malesuada mi placerat massa. Sagittis viverra habitasse nunc tortor urna 
+            diam diam sem eget. Fusce lorem amet sed phasellus nunc et quam. <strong>Sed proin urna tincidunt massa</strong>. Varius congue dolor ipsum adipiscing. <strong>Fermentum urna 
+            nullam nibh senectus gravida leo morbi elementum arcu</strong>.
+        </p>
+    </section>
+    <section>
+        <h2>A. Struktur Perusahaan</h2>
+        <ol>
+            <li><strong>CEO</strong> : George Philips</li>
+            <li><strong>CTO</strong> : Vishal Singh</li>   
+        </ol>
+        <ul>
+            <li><strong>Divisi Finance & Accounting</strong>
+                <ol type="a">
+                    <li>Manager : Jill Wright</li>
+                    <li>Anggota tim :</li>
+                    <ol type="i">
+                        <li>Jacob Hayes</li>
+                        <li>Louis Tomlinson</li>
+                    </ol>
+                </ol>
+            </li>
+            <li><strong>Divisi IT Technology</strong>
+                <ol type="a">
+                    <li>Manager : Aditya Ishaan Akhil</li>
+                    <li>Anggota tim :</li>
+                    <ol type="i">
+                        <li>Josephine Larson</li>
+                        <li>Ravindra Singh</li>
+                    </ol>
+                </ol>
+            </li>
+        </ul>
+    </section>
+    <hr>
+    <section>
+        <h2>B. Form Registrasi Karyawan Baru</h2>
+        <p>Mohon untuk mengisi form dibawah ini untuk registrasi karyawan baru.</p>
+        <div>
+            <form action="">
+                <label for="nama">Nama Lengkap</label> <br>
+                <input type="text" name="nama" id="nama" required placeholder="Masukan Nama Lengkap"> <br><br>
+
+                <label for="ttl">Tanggal Lahir</label> <br>
+                <input type="date" name="ttl" id="ttl" required placeholder="Tanggal Lahir"> <br> <br>   
+                
+                <label for="email">Alamat Email</label> <br>
+                <input type="email" name="email" id="email" required placeholder="example@company.com"> <br> <br>
+                
+                <label for="divisi">Pilih divisi untuk karyawan baru</label> <br>
+                <input type="radio" name="divisi" id="divisi" required value="finance">Divisi Finance & Accounting</input> <br>
+                <input type="radio" name="divisi" id="divisi" required value="it" checked>Divisi IT Technology</input> <br> <br>
+                
+                <label for="jadwal">Pilih jadwal hari untuk WFO dalam satu minggu, sesuai dengan divisi yang dipilih</label> <br>
+                <input type="checkbox" name="jadwal" id="jadwal" required value="senin" checked>Senin</input> <br>
+                <input type="checkbox" name="jadwal" id="jadwal" required value="selasa">Selasa</input> <br>
+                <input type="checkbox" name="jadwal" id="jadwal" required value="rabu">Rabu</input> <br>
+                <input type="checkbox" name="jadwal" id="jadwal" required value="kamis">Kamis</input> <br>
+                <input type="checkbox" name="jadwal" id="jadwal" required value="jumat">Jumat</input> <br> <br>
+
+                <label for="upload">Lampirkan Foto ID Card Pegawai</label> <br>
+                <input type="file" name="upload" id="upload" required> <br> <br>
+                
+                <label for="notes">Jika terdapat notes lainnya, mohon dapat ditulis dibawah</label> <br>
+                <textarea name="notes" id="notes" cols="30" rows="10" required placeholder="Masukan notes..."></textarea> <br><br>
+                
+                <button type="submit">Submit Form</button>
+            </form>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <h2>C. Tabel Data Karyawan</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Karyawan</th>
+                    <th>Nama Lengkap</th>
+                    <th>Divisi</th>
+                    <th>Jadwal WFO</th>
+                    <th>Alamat Email</th>
+                    <th>Foto Karyawan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>IT Technology</td>
+                    <td>Selasa, Rabu, Jumat</td>
+                    <td>johndoe@company.com</td>
+                    <td><img src="./images/profile_employee_1.jpg" alt="profile 1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Christina Liauw</td>
+                    <td>Finance & Accounting</td>
+                    <td>Senin, Selasa, Kamis</td>
+                    <td>christinaliauw@company.com</td>
+                    <td><img src="./images/profile_employee_2.jpg" alt="profile 2"></td>
+                </tr>
+        </table>
+    </section>
+
+    
+    
+</body>
+</html>
