@@ -200,30 +200,30 @@
 //   `\nApakah nilai ${nilaiTarget2} terdapat pada array : ${isNilaiTarget2Exist}\n`
 // );
 
-const bubbleSortAlgorithm = (arrayData) => {
-  //* Step 1. Inisialisasi variable awal
-  let swapped = false;
-  const n = arrayData.length;
+// const bubbleSortAlgorithm = (arrayData) => {
+//   //* Step 1. Inisialisasi variable awal
+//   let swapped = false;
+//   const n = arrayData.length;
 
-  //* Step 2. Lakukan looping terluar
-  for (let i = 0; i < n; i++) {
-    //* Step 3. Inisialisasi nilai swapped setiap looping
-    swapped = false;
-    for (let j = 0; j < n - i; j++) {
-      // * Step 4. Lakukan pengecekan antara j dan j+1
-      if (arrayData[j] > arrayData[j + 1]) {
-        let tempData = arrayData[j + 1];
-        arrayData[j + 1] = arrayData[j];
-        arrayData[j] = tempData;
-        swapped = true;
-      }
-    }
-    //* Step 5. Break looping jika tidak ada yang di swap lagi
-    if (swapped === false) break;
-  }
+//   //* Step 2. Lakukan looping terluar
+//   for (let i = 0; i < n; i++) {
+//     //* Step 3. Inisialisasi nilai swapped setiap looping
+//     swapped = false;
+//     for (let j = 0; j < n - i; j++) {
+//       // * Step 4. Lakukan pengecekan antara j dan j+1
+//       if (arrayData[j] > arrayData[j + 1]) {
+//         let tempData = arrayData[j + 1];
+//         arrayData[j + 1] = arrayData[j];
+//         arrayData[j] = tempData;
+//         swapped = true;
+//       }
+//     }
+//     //* Step 5. Break looping jika tidak ada yang di swap lagi
+//     if (swapped === false) break;
+//   }
 
-  return arrayData;
-};
+//   return arrayData;
+// };
 
 // const arrayData = [9, 17, 1, 8, 4];
 // console.log('\nArray1 sebelum sorting: ', arrayData);
@@ -235,59 +235,92 @@ const bubbleSortAlgorithm = (arrayData) => {
 // const sortedArrayData2 = bubbleSortAlgorithm(arrayData);
 // console.log('\nArray2 setelah sorting: ', sortedArrayData2, '\n');
 
-const selectionSortAlgorithm = (arrayData) => {
-  const n = arrayData.length;
+// const selectionSortAlgorithm = (arrayData) => {
+//   const n = arrayData.length;
 
-  for (let i = 0; i < n - 1; i++) {
-    //* Step 1. Set nilai dari index elemen dengan nilai paling kecil
-    let minIndex = i;
-    //* Step 2. Lakukan inner looping untuk mencari nilai minIndex pada array
-    for (let j = i + 1; j < n; j++) {
-      //* Step 3. Compare nilai minIndex dan j, jika j < minIndex, set j sebagai minIndex
-      if (arrayData[j] < arrayData[minIndex]) {
-        minIndex = j;
+//   for (let i = 0; i < n - 1; i++) {
+//     //* Step 1. Set nilai dari index elemen dengan nilai paling kecil
+//     let minIndex = i;
+//     //* Step 2. Lakukan inner looping untuk mencari nilai minIndex pada array
+//     for (let j = i + 1; j < n; j++) {
+//       //* Step 3. Compare nilai minIndex dan j, jika j < minIndex, set j sebagai minIndex
+//       if (arrayData[j] < arrayData[minIndex]) {
+//         minIndex = j;
+//       }
+//     }
+
+//     //* Step 4. Swap nilai array ke - i dan minIndex
+//     if (minIndex !== i) {
+//       let tempData = arrayData[i];
+//       arrayData[i] = arrayData[minIndex];
+//       arrayData[minIndex] = tempData;
+//     }
+//   }
+
+//   return arrayData;
+// };
+
+// const insertionSortAlgorithm = (arrayData) => {
+//   const n = arrayData.length;
+
+//   for (let i = 1; i < n; i++) {
+//     //* Step 1. Set nilai dari keyTarget dan j
+//     let keyTarget = arrayData[i];
+//     let j = i - 1;
+
+//     //* Step 2. Lakukan looping ke belakang untuk compare j dan keyTarget
+//     while (j >= 0 && arrayData[j] > keyTarget) {
+//       //* Step 3. Jika memenuhi kondisi, swap nilai [j + 1] dengan j
+//       arrayData[j + 1] = arrayData[j];
+//       j--;
+//     }
+
+//     //* Step 4. Ubah nilai j + 1 dengan keyTarget
+//     arrayData[j + 1] = keyTarget;
+//   }
+
+//   return arrayData;
+// };
+
+// const arrayData = [9, 17, 1, 8, 4];
+// console.log('\nArray1 sebelum sorting: ', arrayData);
+// const sortedArrayData = bubbleSortAlgorithm(arrayData);
+// console.log('\nArray1 setelah sorting: ', sortedArrayData);
+
+// const arrayData2 = [90, 22, 17, 10, 23, 2, 11, 9, 7];
+// console.log('\nArray2 sebelum sorting: ', arrayData2);
+// const sortedArrayData2 = bubbleSortAlgorithm(arrayData2);
+// console.log('\nArray2 setelah sorting: ', sortedArrayData2, '\n');
+
+// const menghitungTotalArray = (arrayData) => {
+//   let totalArray = 0;
+
+//   for(let i = 0; i < arrayData.length; i++) {
+//     totalArray += arrayData[i];
+//   }
+
+//   return totalArray;
+// }
+
+const bubbleSortAlgorithm = (arrayData) => {
+  const arrayLength = arrayData.length;
+  let isSwapped = false;
+
+  for (let i = 0; i < arrayLength; i++) {
+    isSwapped = false;
+
+    for (let j = 0; j < arrayLength - 1; j++) {
+      if (arrayData[j] > arrayData[j + 1]) {
+        let tempData = arrayData[j];
+        arrayData[j] = arrayData[j + 1];
+        arrayData[j + 1] = tempData;
+        isSwapped = true;
       }
     }
 
-    //* Step 4. Swap nilai array ke - i dan minIndex
-    if (minIndex !== i) {
-      let tempData = arrayData[i];
-      arrayData[i] = arrayData[minIndex];
-      arrayData[minIndex] = tempData;
-    }
+    if (isSwapped === false) break;
   }
-
-  return arrayData;
 };
 
-const insertionSortAlgorithm = (arrayData) => {
-  const n = arrayData.length;
-
-  for (let i = 1; i < n; i++) {
-    //* Step 1. Set nilai dari keyTarget dan j
-    let keyTarget = arrayData[i];
-    let j = i - 1;
-
-    //* Step 2. Lakukan looping ke belakang untuk compare j dan keyTarget
-    while (j >= 0 && arrayData[j] > keyTarget) {
-      //* Step 3. Jika memenuhi kondisi, swap nilai [j + 1] dengan j
-      arrayData[j + 1] = arrayData[j];
-      j--;
-    }
-
-    //* Step 4. Ubah nilai j + 1 dengan keyTarget
-    arrayData[j + 1] = keyTarget;
-  }
-
-  return arrayData;
-};
-
-const arrayData = [9, 17, 1, 8, 4];
-console.log('\nArray1 sebelum sorting: ', arrayData);
-const sortedArrayData = bubbleSortAlgorithm(arrayData);
-console.log('\nArray1 setelah sorting: ', sortedArrayData);
-
-const arrayData2 = [90, 22, 17, 10, 23, 2, 11, 9, 7];
-console.log('\nArray2 sebelum sorting: ', arrayData2);
-const sortedArrayData2 = bubbleSortAlgorithm(arrayData2);
-console.log('\nArray2 setelah sorting: ', sortedArrayData2, '\n');
+const arrayDummy = [19, 2, 7, 1, 6, 5];
+console.log(binarySearchAlgorithm(arrayDummy, 19));
