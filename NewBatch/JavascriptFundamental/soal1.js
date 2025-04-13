@@ -14,3 +14,25 @@
  * Format print --> Selamat Pagi Semuanya, perkenalkan nama saya {{nama}}, saya seorang student dengan
  * usia {{usia}} tahun. Jika ada yang ingin mengontak saya bisa melalui email saya {{email}}.
  */
+
+const nama = 'Budi Santoso';
+const usia = 24;
+const email = 'budi_santoso21@gmail.com';
+const isAktif = true;
+
+//* Print
+// 1 Template Literal String
+console.log(
+  `Selamat Pagi Semuanya, perkenalkan nama saya ${nama}, saya seorang student dengan usia ${usia} tahun. Jika ada yang ingin mengontak saya bisa melalui email saya ${email}`
+);
+
+// 2. Cara biasa
+console.log(
+  'Selamat Pagi Semuanya, perkenalkan nama saya',
+  nama,
+  ', saya seorang student dengan usia ',
+  usia,
+  ' tahun. Jika ada yang ingin mengontak saya bisa melalui email saya ',
+  email,
+  '.'
+);
