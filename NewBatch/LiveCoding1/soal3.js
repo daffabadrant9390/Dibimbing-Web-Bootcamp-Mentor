@@ -5,3 +5,4 @@
  * - Jika suatu angka merupakan bilangan ganjil DAN berada dibawah 5, maka lakukan pemangkatan dari angka 1-3
  * - Jika suatu angka berada diatas 5, maka lakukan pemangkatan dari angka 1 saja.
  */
+

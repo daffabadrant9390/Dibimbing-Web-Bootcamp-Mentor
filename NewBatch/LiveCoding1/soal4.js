@@ -8,3 +8,22 @@
  *
  * NOTES: Hanya gunakan looping dan if else biasa, tidak menggunakan method tambahan seperti split(), reverse() dll.
  */
+
+const contohKata1 = 'madamada';
+
+let leftSideIdx = 0;
+let rightSideIdx = contohKata1.length - 1;
+let isPalindrome = true;
+
+while (leftSideIdx < rightSideIdx) {
+  // Jika ada yang sama
+  if (contohKata1[leftSideIdx] !== contohKata1[rightSideIdx]) {
+    isPalindrome = false;
+    break;
+  }
+
+  leftSideIdx++;
+  rightSideIdx--;
+}
+
+console.log(isPalindrome ? 'yes palindrome' : 'no palindrome');
