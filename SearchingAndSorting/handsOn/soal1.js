@@ -22,3 +22,7 @@ const linearSearchAlgorithm = (arrayData, targetValue) => {
 };
 
 console.log(linearSearchAlgorithm([9, 12, 1, 7, 29, 18, 6], 29));
+
+const a = 2;
+const b = 4;
+console.log(a + b);
