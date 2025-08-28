@@ -1,0 +1,14 @@
+{
+  "name": "assignmentday7-sandideworahmadianto",
+  "version": "1.0.0",
+  "main": "assignment7.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sandi",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "lodash": "^4.17.21"
+  }
+}

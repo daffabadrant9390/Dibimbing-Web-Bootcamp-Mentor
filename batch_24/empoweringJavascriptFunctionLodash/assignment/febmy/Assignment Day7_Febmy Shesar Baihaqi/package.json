@@ -1,0 +1,14 @@
+{
+  "name": "assignment-day7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Soal1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Febmy Shesar Baihaqi",
+  "license": "ISC",
+  "devDependencies": {
+    "lodash": "^4.17.21"
+  }
+}
