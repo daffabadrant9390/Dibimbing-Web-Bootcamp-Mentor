@@ -1,0 +1,19 @@
+{
+  "name": "nodejs1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "node-sync": "^0.5.6",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {}
+}

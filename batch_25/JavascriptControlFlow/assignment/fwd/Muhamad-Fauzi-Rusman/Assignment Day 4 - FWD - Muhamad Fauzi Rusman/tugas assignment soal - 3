@@ -1,0 +1,15 @@
+// Outer loop: angka dari 1 hingga 5
+for (let nilai = 1; nilai <= 5; nilai++) {
+    // Inner loop: pangkat dari 1 hingga 3
+    for (let pangkatNilai = 1; pangkatNilai <= 3; pangkatNilai++) {
+        // Hitung perpangkatan secara manual menggunakan loop
+        let hasil = 1;
+        for (let i = 1; i <= pangkatNilai; i++) {
+            hasil *= nilai;
+        }
+        // Tampilkan hasil sesuai format
+        console.log(`${nilai} pangkat ${pangkatNilai} = ${hasil}`);
+    }
+    // memisahkan dengan ========= setiap kelompok angka
+    console.log("===============================");
+}

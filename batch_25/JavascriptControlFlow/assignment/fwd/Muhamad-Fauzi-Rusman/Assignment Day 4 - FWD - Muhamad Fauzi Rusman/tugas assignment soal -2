@@ -1,0 +1,52 @@
+// Simpan nilai 5 semester ke dalam array
+const nilaiSemester = [85, 95.20, 67.75, 78, 75];
+
+// Hitung total nilai
+let total = 0;
+for (let i = 0; i < nilaiSemester.length; i++) {
+    total += nilaiSemester[i];
+}
+
+// Hitung rata-rata
+const rataRata = total / nilaiSemester.length;
+
+// Tentukan grade berdasarkan kriteria
+let grade;
+if (rataRata >= 90 && rataRata <= 100) {
+    grade = 'A';
+} else if (rataRata >= 80 && rataRata <= 89.99) {
+    grade = 'B';
+} else if (rataRata >= 75 && rataRata <= 79.99) {
+    grade = 'C';
+} else if (rataRata >= 60 && rataRata <= 74.99) {
+    grade = 'D';
+} else {
+    grade = 'E'; // rataRata < 60
+}
+
+// Cetak hasil
+console.log(`Nilai rata-rata Gabriel: ${rataRata.toFixed(2)}`);
+console.log(`Grade akhir Gabriel: ${grade}`);
+
+
+console.log('===========================================================');
+console.log("\n");
+
+
+// // input 
+// let input = t("Masukkan nilai Gabriel:");
+
+// // Ubah input ke angka
+// let nilai = parseFloat(input);
+// let Grade;
+
+// // Tentukan grade
+// if (nilai >= 90) grade = "A";
+// else if (nilai >= 80) grade = "B";
+// else if (nilai >= 75) grade = "C";
+// else if (nilai >= 60) grade = "D";
+// else grade = "E";
+
+// // Tampilkan hasil
+// console.log(`Grade Gabriel adalah: ${grade}`);
+// alert(`Grade Gabriel adalah: ${grade}`);
