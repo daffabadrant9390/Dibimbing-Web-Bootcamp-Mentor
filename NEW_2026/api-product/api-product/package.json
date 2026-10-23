@@ -1,0 +1,36 @@
+{
+  "name": "api-product",
+  "version": "1.0.0",
+  "description": "REST API CRUD produk dengan Express.js dan PostgreSQL",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "migrate": "node scripts/migrate.js",
+    "seed": "node scripts/seed.js",
+    "test": "dotenv -e .env -- vitest run",
+    "test:watch": "dotenv -e .env -- vitest",
+    "test:coverage": "dotenv -e .env -- vitest run --coverage",
+    "test:integration": "dotenv -e .env -- vitest run tests/integration",
+    "test:unit": "vitest run tests/unit"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^10.0.0",
+    "yaml": "^2.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "dotenv-cli": "^11.0.0",
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

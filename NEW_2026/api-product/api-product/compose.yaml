@@ -1,0 +1,44 @@
+# Docker Compose untuk PostgreSQL lokal (development + test).
+# Kredensial sesuai .env.example. Hanya untuk development, jangan dipakai di production.
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: product_api_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: change-me
+      POSTGRES_DB: product_api
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app_user -d product_api"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  db_test:
+    image: postgres:16-alpine
+    container_name: product_api_postgres_test
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: change-me
+      POSTGRES_DB: product_api_test
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata_test:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app_user -d product_api_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+volumes:
+  pgdata:
+  pgdata_test:

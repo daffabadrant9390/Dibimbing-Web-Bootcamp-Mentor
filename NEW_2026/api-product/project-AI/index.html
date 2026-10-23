@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1eb" />
+    <meta name="description" content="Detail produk dari katalog." />
+    <title>Detail Produk | Escentric Molecules</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <script src="product-interaction.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement">Pengiriman gratis untuk pesanan di atas £80 <span aria-hidden="true">✳</span></div>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Escentric Molecules, beranda">ESCENTRIC<br /><span>MOLECULES</span></a>
+      <nav class="primary-nav" aria-label="Navigasi utama">
+        <a href="#detail">Parfum</a>
+        <a href="#cerita">Tentang produk</a>
+      </nav>
+      <button class="bag-button" type="button" aria-label="Tas belanja, 0 item">Tas <span id="bag-count">0</span></button>
+    </header>
+
+    <main id="top">
+      <div class="breadcrumbs"><a href="#top">Beranda</a><span>/</span><a href="#top">Produk</a><span>/</span><span id="breadcrumb-product">Memuat produk…</span></div>
+      <p class="api-status" id="api-status" role="status" aria-live="polite">Memuat detail produk…</p>
+
+      <section class="product-layout" aria-labelledby="product-title">
+        <div class="gallery" aria-label="Galeri produk">
+          <div class="thumbnail-list" id="thumbnail-list" role="group" aria-label="Pilih gambar produk"></div>
+          <button class="hero-image-wrap zoom-trigger" id="zoom-trigger" type="button" aria-label="Perbesar gambar produk" disabled>
+            <img id="hero-image" class="hero-image" alt="Foto produk akan dimuat" />
+            <span class="zoom-hint" aria-hidden="true">Perbesar <span>+</span></span>
+            <span class="image-index" id="image-index">01 / 03</span>
+          </button>
+        </div>
+
+        <div class="product-info" id="detail">
+          <p class="eyebrow">Product collection <span>·</span> Product detail</p>
+          <h1 id="product-title">Memuat produk…</h1>
+          <p class="product-price" id="productPrice" data-price="">— <span id="stock-summary">Memuat stok</span></p>
+          <p class="intro" id="product-intro">Informasi produk sedang diambil dari katalog.</p>
+
+          <div class="accords" id="accords" aria-label="Variasi produk"></div>
+
+          <!-- TODO(Day 16): stepper lama, add to bag, dan batas stok dipakai lagi setelah belajar if/else.
+          <div class="purchase-row">
+            <div class="quantity-control" aria-label="Jumlah produk">
+              <button type="button" id="quantity-minus" aria-label="Kurangi jumlah" disabled>−</button>
+              <output id="quantity" aria-live="polite">1</output>
+              <button type="button" id="quantity-plus" aria-label="Tambah jumlah" disabled>+</button>
+            </div>
+            <button class="add-button" id="add-to-bag" type="button" disabled>Memuat… <span aria-hidden="true">↗</span></button>
+          </div>
+          -->
+          <!-- Day 15 · Langkah 2: form pilihan varian + quantity -->
+          <form id="productForm" class="product-form">
+            <label for="variant">Varian</label>
+            <select id="variant" required>
+              <option value="">Pilih varian</option>
+            </select>
+            <label for="quantity">Jumlah</label>
+            <input id="quantity" type="number" min="1" step="1" value="1" required>
+            <button class="add-button" type="submit" disabled>Update Pilihan <span aria-hidden="true">↗</span></button>
+          </form>
+          <p class="shipping-note"><span aria-hidden="true">✳</span> Complimentary shipping untuk pesanan di atas £80</p>
+
+          <button class="wishlist-button" id="wishlist-button" type="button" aria-pressed="false">
+            <span class="wishlist-icon" aria-hidden="true">♡</span>
+            <span id="wishlist-label">Tambah ke wishlist</span>
+          </button>
+
+          <div class="product-details" id="cerita">
+            <details open>
+              <summary>Deskripsi <span aria-hidden="true">+</span></summary>
+              <p id="product-description">Memuat deskripsi produk…</p>
+            </details>
+            <details>
+              <summary>Karakter aroma <span aria-hidden="true">+</span></summary>
+              <p id="product-variants">Memuat variasi produk…</p>
+            </details>
+            <details>
+              <summary>Pengiriman &amp; pengembalian <span aria-hidden="true">+</span></summary>
+              <p>Informasi pada halaman ini adalah simulasi untuk pembelajaran. Pengiriman dan transaksi nyata tidak tersedia.</p>
+            </details>
+          </div>
+          <p class="learning-note">Halaman demo pembelajaran. Tidak memproses pembayaran.</p>
+        </div>
+      </section>
+
+      <aside class="checkout-bar" id="checkoutBar" aria-label="Ringkasan pesanan" hidden>
+        <div class="checkout-summary">
+          <p class="checkout-label">Ringkasan pesanan</p>
+          <p class="checkout-detail" id="selectionSummary" aria-live="polite"></p>
+        </div>
+        <div class="checkout-total"><span>Subtotal</span><strong id="subtotalText">Rp0</strong></div>
+        <button class="checkout-button" id="checkoutButton" type="button">Lanjutkan Pembayaran <span aria-hidden="true">↗</span></button>
+      </aside>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+    <dialog class="zoom-dialog" id="image-zoom" aria-label="Galeri gambar produk">
+      <button class="zoom-close" id="zoom-close" type="button" aria-label="Tutup galeri gambar">×</button>
+      <button class="zoom-navigation zoom-previous" id="zoom-previous" type="button" aria-label="Gambar sebelumnya">‹</button>
+      <div class="zoom-stage"><img id="zoom-image" alt="" /></div>
+      <button class="zoom-navigation zoom-next" id="zoom-next" type="button" aria-label="Gambar berikutnya">›</button>
+      <div class="zoom-footer">
+        <span class="zoom-position" id="zoom-position" aria-live="polite">01 / 03</span>
+        <div class="zoom-thumbnails" id="zoom-thumbnails" role="group" aria-label="Pilih gambar produk"></div>
+      </div>
+    </dialog>
+    <footer class="site-footer"><span>Escentric Molecules</span><span>Exploration through fragrance</span><span>Product study · 2026</span></footer>
+  </body>
+</html>
