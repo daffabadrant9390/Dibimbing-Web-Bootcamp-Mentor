@@ -6,6 +6,17 @@ export function formatPrice(price) {
   return rupiah.format(price);
 }
 
+// Day 16: label stok pakai if / else if / else (yang pertama true menang)
+export function stockLabel(quantity) {
+  if (quantity === 0) {
+    return '<span class="out-of-stock">Stok habis</span>';
+  } else if (quantity <= 5) {
+    return `<span class="low-stock">Sisa ${quantity}, segera habis</span>`;
+  } else {
+    return `${quantity} tersedia`;
+  }
+}
+
 export function errorMessage(error) {
   if (error.status === 404 || error.problem?.type?.endsWith('/product-not-found')) {
     return 'Produk tidak ditemukan atau sudah dihapus.';

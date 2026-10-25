@@ -14,7 +14,7 @@
     <script src="product-interaction.js" defer></script>
   </head>
   <body>
-    <div class="announcement">Pengiriman gratis untuk pesanan di atas £80 <span aria-hidden="true">✳</span></div>
+    <div class="announcement">Gratis ongkir untuk belanja minimal Rp300.000 <span aria-hidden="true">✳</span></div>
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="Escentric Molecules, beranda">ESCENTRIC<br /><span>MOLECULES</span></a>
       <nav class="primary-nav" aria-label="Navigasi utama">
@@ -46,27 +46,23 @@
 
           <div class="accords" id="accords" aria-label="Variasi produk"></div>
 
-          <!-- TODO(Day 16): stepper lama, add to bag, dan batas stok dipakai lagi setelah belajar if/else.
-          <div class="purchase-row">
-            <div class="quantity-control" aria-label="Jumlah produk">
-              <button type="button" id="quantity-minus" aria-label="Kurangi jumlah" disabled>−</button>
-              <output id="quantity" aria-live="polite">1</output>
-              <button type="button" id="quantity-plus" aria-label="Tambah jumlah" disabled>+</button>
-            </div>
-            <button class="add-button" id="add-to-bag" type="button" disabled>Memuat… <span aria-hidden="true">↗</span></button>
-          </div>
-          -->
-          <!-- Day 15 · Langkah 2: form pilihan varian + quantity -->
-          <form id="productForm" class="product-form">
+          <!-- Day 15: form varian + jumlah. Day 16: badge stok, stepper −/+, pesan validasi -->
+          <form id="productForm" class="product-form" novalidate>
             <label for="variant">Varian</label>
             <select id="variant" required>
               <option value="">Pilih varian</option>
             </select>
             <label for="quantity">Jumlah</label>
-            <input id="quantity" type="number" min="1" step="1" value="1" required>
+            <div class="quantity-stepper">
+              <button type="button" id="quantityMinus" aria-label="Kurangi jumlah">−</button>
+              <input id="quantity" type="number" min="1" step="1" value="1" required>
+              <button type="button" id="quantityPlus" aria-label="Tambah jumlah">+</button>
+            </div>
+            <p class="stock-badge" id="stockBadge" aria-live="polite" hidden></p>
             <button class="add-button" type="submit" disabled>Update Pilihan <span aria-hidden="true">↗</span></button>
+            <p class="form-message" id="formMessage" role="alert" hidden></p>
           </form>
-          <p class="shipping-note"><span aria-hidden="true">✳</span> Complimentary shipping untuk pesanan di atas £80</p>
+          <p class="shipping-note"><span aria-hidden="true">✳</span> Gratis ongkir untuk belanja minimal Rp300.000</p>
 
           <button class="wishlist-button" id="wishlist-button" type="button" aria-pressed="false">
             <span class="wishlist-icon" aria-hidden="true">♡</span>
@@ -95,8 +91,9 @@
         <div class="checkout-summary">
           <p class="checkout-label">Ringkasan pesanan</p>
           <p class="checkout-detail" id="selectionSummary" aria-live="polite"></p>
+          <ul class="unit-list" id="unitList" aria-label="Rincian unit"></ul>
         </div>
-        <div class="checkout-total"><span>Subtotal</span><strong id="subtotalText">Rp0</strong></div>
+        <div class="checkout-total"><span>Subtotal</span><strong id="subtotalText">Rp0</strong><small class="shipping-info" id="shippingInfo"></small></div>
         <button class="checkout-button" id="checkoutButton" type="button">Lanjutkan Pembayaran <span aria-hidden="true">↗</span></button>
       </aside>
       <div class="toast" id="toast" role="status" aria-live="polite"></div>

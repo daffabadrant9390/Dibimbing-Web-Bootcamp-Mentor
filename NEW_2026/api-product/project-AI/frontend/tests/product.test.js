@@ -1,8 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { unwrapProduct, unwrapProductList, ApiError } from '../src/api/products.js';
-import { errorMessage, fieldErrors, formatPrice, validateProductInput } from '../src/lib/product.js';
+import { errorMessage, fieldErrors, formatPrice, stockLabel, validateProductInput } from '../src/lib/product.js';
 
 describe('product helpers', () => {
+  it('labels stock with if / else if / else (Day 16)', () => {
+    expect(stockLabel(0)).toContain('Stok habis');
+    expect(stockLabel(5)).toContain('Sisa 5, segera habis');
+    expect(stockLabel(1)).toContain('Sisa 1');
+    expect(stockLabel(6)).toBe('6 tersedia');
+  });
+
   it('formats prices as Indonesian Rupiah', () => {
     expect(formatPrice(150000)).toMatch(/^Rp\s?150\.000$/u);
   });

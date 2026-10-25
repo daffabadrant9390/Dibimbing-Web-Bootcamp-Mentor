@@ -3,37 +3,22 @@ const requestedId = new URLSearchParams(window.location.search).get("id") || "1"
 const money = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 });
 const $ = (selector) => document.querySelector(selector);
 
-// TODO(Day 16): stepper lama dipakai lagi setelah belajar if/else
-// const quantityOutput = $("#quantity");
 const bagCount = $("#bag-count");
 const bagButton = $(".bag-button");
 const toast = $("#toast");
 const heroImage = $("#hero-image");
 const thumbnailList = $("#thumbnail-list");
 const zoomThumbnailList = $("#zoom-thumbnails");
-// const quantityMinus = $("#quantity-minus");
-// const quantityPlus = $("#quantity-plus");
-// const addToBag = $("#add-to-bag");
 const zoomTrigger = $("#zoom-trigger");
 const zoomDialog = $("#image-zoom");
 const zoomImage = $("#zoom-image");
 const status = $("#api-status");
-let quantity = 1;
 let maxQuantity = 0;
 let bagItems = 0;
 let activeImageIndex = 0;
 let productImages = [];
 let currentProduct;
 let toastTimer;
-
-// TODO(Day 16): batas stok di stepper lama
-// function updateQuantity(nextQuantity) {
-//   if (maxQuantity < 1) return;
-//   quantity = Math.min(maxQuantity, Math.max(1, nextQuantity));
-//   quantityOutput.textContent = quantity;
-//   quantityMinus.disabled = quantity === 1;
-//   quantityPlus.disabled = quantity === maxQuantity;
-// }
 
 function setImage(index) {
   if (!productImages.length) return;
@@ -107,21 +92,32 @@ function renderProduct(product) {
   }));
 
   maxQuantity = product.variants.quantity;
-  $("#stock-summary").textContent = maxQuantity ? maxQuantity + " tersedia" : "Stok habis";
-  // TODO(Day 16): kalau stok habis, matikan form (butuh if/else)
 
   // Day 15 · Langkah 5: harga + varian dari API untuk product-interaction.js
   const priceElement = $("#productPrice");
   const variantInput = $("#variant");
+  const productForm = $("#productForm");
   const submitButton = $("#productForm button[type='submit']");
+  const stockText = $("#stock-summary");
   priceElement.dataset.price = product.price;
+  // Day 16: API cuma punya SATU stok total, dipakai getStock() di product-interaction.js
+  productForm.dataset.stock = maxQuantity;
   const values = product.variants.colorOrSize;
   variantInput.innerHTML =
     '<option value="">Pilih varian</option>';
   values.forEach((value) => {
     variantInput.add(new Option(value, value));
   });
-  submitButton.disabled = false; // API ready
+  // Day 16: stok habis -> matikan form, selain itu form aktif (API ready)
+  if (maxQuantity === 0) {
+    stockText.textContent = "Stok habis";
+    submitButton.disabled = true;
+    variantInput.disabled = true;
+  } else {
+    stockText.textContent = maxQuantity + " tersedia";
+    submitButton.disabled = false;
+    variantInput.disabled = false;
+  }
   renderGallery(product);
   status.textContent = "";
   status.classList.remove("is-error");
@@ -148,9 +144,6 @@ async function loadProduct() {
   }
 }
 
-// TODO(Day 16): stepper lama
-// quantityMinus.addEventListener("click", () => updateQuantity(quantity - 1));
-// quantityPlus.addEventListener("click", () => updateQuantity(quantity + 1));
 zoomTrigger.addEventListener("click", () => {
   setImage(activeImageIndex);
   zoomDialog.showModal();
@@ -178,7 +171,7 @@ document.querySelectorAll(".product-details details").forEach((detail) => {
     });
   });
 });
-// TODO(Day 16): add to bag
+// TODO(nanti): add to bag butuh data keranjang (array/object), dibahas di sesi berikutnya
 // addToBag.addEventListener("click", () => {
 //   bagItems += quantity;
 //   bagCount.textContent = bagItems;

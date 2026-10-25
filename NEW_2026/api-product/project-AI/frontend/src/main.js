@@ -1,6 +1,6 @@
 import './styles.css';
 import { productApi } from './api/products.js';
-import { MAX_PHOTOS, errorMessage, fieldErrors, formatPrice, validateProductInput } from './lib/product.js';
+import { MAX_PHOTOS, errorMessage, fieldErrors, formatPrice, stockLabel, validateProductInput } from './lib/product.js';
 
 const app = document.querySelector('#app');
 let controller;
@@ -68,7 +68,7 @@ async function renderList() {
       layout('<section class="state"><h1>Belum ada produk</h1><p>Tambahkan produk pertama untuk memulai katalog.</p><a class="button" href="#/products/new">Tambah produk</a></section>');
       return;
     }
-    layout(`<section><div class="page-heading"><div><h1>Produk</h1><p>${total} produk tersedia</p></div><a class="button" href="#/products/new">Tambah produk</a></div><div class="product-grid">${products.map((product) => `<article class="product-card"><a href="${productPath(product.id)}">${productImage(product)}<h2>${escapeHtml(product.name)}</h2><p class="price">${formatPrice(product.price)}</p><p>${product.variants.quantity === 0 ? '<span class="out-of-stock">Stok habis</span>' : `${product.variants.quantity} tersedia`}</p></a></article>`).join('')}</div></section>`);
+    layout(`<section><div class="page-heading"><div><h1>Produk</h1><p>${total} produk tersedia</p></div><a class="button" href="#/products/new">Tambah produk</a></div><div class="product-grid">${products.map((product) => `<article class="product-card"><a href="${productPath(product.id)}">${productImage(product)}<h2>${escapeHtml(product.name)}</h2><p class="price">${formatPrice(product.price)}</p><p>${stockLabel(product.variants.quantity)}</p></a></article>`).join('')}</div></section>`);
     installImageFallback();
   } catch (error) {
     if (error.name !== 'AbortError') layout(errorState(error));
@@ -85,7 +85,7 @@ async function renderDetail(id) {
   try {
     const product = await productApi.get(id, { signal: cancelPreviousRequest() });
     if (route() !== `/products/${id}`) return;
-    const stock = product.variants.quantity === 0 ? '<span class="out-of-stock">Stok habis</span>' : `${product.variants.quantity} tersedia`;
+    const stock = stockLabel(product.variants.quantity);
     layout(`<article class="product-detail"><div>${productImage(product)}${galleryThumbnails(product)}</div><div><a class="back" href="#/products">← Semua produk</a><h1>${escapeHtml(product.name)}</h1><p class="price">${formatPrice(product.price)}</p><h2>Variasi</h2><ul class="chips">${product.variants.colorOrSize.map((variant) => `<li>${escapeHtml(variant)}</li>`).join('')}</ul><p class="stock">Stok: ${stock}</p><h2>Deskripsi</h2><p class="description">${escapeHtml(product.description)}</p><div class="actions"><a class="button" href="#/products/${product.id}/edit">Ubah</a><button class="button danger" type="button" data-delete="${product.id}" data-name="${escapeHtml(product.name)}">Hapus</button></div></div></article>`);
     installImageFallback();
     bindGallery();

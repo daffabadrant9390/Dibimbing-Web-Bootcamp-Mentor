@@ -125,23 +125,39 @@ h1 span { font-family: var(--sans); font-size: .68em; font-weight: 400; color: #
 }
 
 /* Day 15 · form pilihan varian + quantity */
-.product-form { display: grid; grid-template-columns: 1fr 112px; gap: 6px 9px; align-items: end; }
+.product-form { display: grid; grid-template-columns: 1fr 150px; gap: 6px 9px; align-items: end; }
 .product-form label { color: var(--muted); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
 .product-form label[for="variant"] { grid-column: 1; grid-row: 1; }
 .product-form label[for="quantity"] { grid-column: 2; grid-row: 1; }
 .product-form select, .product-form input { height: 50px; padding: 0 12px; border: 1px solid #c7c8bd; background: transparent; color: var(--ink); font: inherit; font-size: 12px; }
 .product-form .add-button { grid-column: 1 / -1; height: 50px; margin-top: 3px; }
 .product-form .add-button:disabled { opacity: .55; cursor: not-allowed; }
+/* Day 16: stepper, badge stok, pesan validasi */
+.quantity-stepper { display: grid; grid-template-columns: 40px 1fr 40px; height: 50px; border: 1px solid #c7c8bd; }
+.quantity-stepper button { border: 0; background: transparent; color: var(--ink); font-size: 18px; cursor: pointer; transition: background .2s; }
+.quantity-stepper button:hover { background: #e9e6dd; }
+.product-form .quantity-stepper input { width: 100%; height: 100%; padding: 0; border: 0; border-inline: 1px solid #c7c8bd; text-align: center; -moz-appearance: textfield; }
+.quantity-stepper input::-webkit-inner-spin-button, .quantity-stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.stock-badge { grid-column: 1 / -1; justify-self: start; margin: 4px 0 0; padding: 5px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.stock-badge[hidden], .form-message[hidden] { display: none; }
+.stock-badge.is-ok { background: #e3ead8; color: var(--moss); }
+.stock-badge.is-low { background: #fbeccb; color: #8a5a00; }
+.stock-badge.is-empty { background: #f6dcd6; color: #9b2c1c; }
+.form-message { grid-column: 1 / -1; margin: 4px 0 0; padding: 10px 12px; border-left: 3px solid #b23a26; background: #f8e6e1; color: #8e2a1a; font-size: 12px; }
 /* Checkout footer bar (muncul setelah Update Pilihan) */
 .checkout-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 4; display: grid; grid-template-columns: 1fr auto auto; gap: 28px; align-items: center; padding: 16px clamp(18px, 5vw, 64px); background: #fbfaf7; border-top: 1px solid var(--line); box-shadow: 0 -10px 30px rgba(30, 33, 30, .08); }
 .checkout-bar[hidden] { display: none; }
-body:has(.checkout-bar:not([hidden])) { padding-bottom: 96px; }
-body:has(.checkout-bar:not([hidden])) .toast { bottom: 112px; }
+body:has(.checkout-bar:not([hidden])) { padding-bottom: 130px; }
+body:has(.checkout-bar:not([hidden])) .toast { bottom: 150px; }
 .checkout-label { margin: 0 0 4px; color: var(--muted); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
 .checkout-detail { margin: 0; color: var(--ink); font-size: 13px; }
 .checkout-total { display: grid; justify-items: end; gap: 2px; }
 .checkout-total span { color: var(--muted); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
 .checkout-total strong { font-family: var(--serif); font-size: 24px; font-weight: 400; }
+.unit-list { display: flex; flex-wrap: wrap; gap: 6px; max-height: 58px; margin: 8px 0 0; padding: 0; overflow-y: auto; list-style: none; }
+.unit-list li { padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-size: 11px; }
+.shipping-info { color: #8a5a00; font-size: 11px; }
+.shipping-info.is-free { color: var(--moss); font-weight: 600; }
 .checkout-button { height: 50px; padding: 0 22px; border: 0; background: var(--moss); color: #f7f5ee; font-size: 12px; letter-spacing: .03em; }
 .checkout-button:hover { background: #26362f; }
 @media (max-width: 640px) {
@@ -149,5 +165,5 @@ body:has(.checkout-bar:not([hidden])) .toast { bottom: 112px; }
   .checkout-summary { grid-column: 1 / -1; }
   .checkout-button { grid-column: 1 / -1; width: 100%; }
   .checkout-total { justify-items: start; grid-column: 1 / -1; }
-  body:has(.checkout-bar:not([hidden])) { padding-bottom: 190px; }
+  body:has(.checkout-bar:not([hidden])) { padding-bottom: 240px; }
 }

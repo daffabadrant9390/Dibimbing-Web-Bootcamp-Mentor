@@ -165,3 +165,26 @@ cd project-AI/frontend && npm test
 - Foto dari Unsplash di `product-1.html` dan `product-3.html` di-hotlink, jadi butuh internet saat demo.
 - Data seed masih memakai URL `example.com`, jadi fotonya akan kosong sampai kamu ganti lewat Vite atau Swagger.
 - Multiple image adalah fitur backend dan array, jadi **di luar scope Day 15**. Cukup ditunjukkan sebagai demo mentor kalau perlu.
+
+---
+
+## 6. Day 16: control flow di halaman produk (23 Oktober 2026)
+
+Folder kerja sekarang `Dibimbing-Web-Bootcamp-Mentor/NEW_2026/api-product`. Detail lengkap, screenshot before/after, dan prompt AI ada di `PANDUAN_WEBSITE_DAY16.md` (+ PDF).
+
+- `project-AI/product-interaction.js`
+  - `getStock(variant)` pakai `switch`: S 5, M 3, L 0, Putih 6, Hitam 2, Krem 0, default -1. Product 2 memakai `form.dataset.stock` dari API.
+  - Badge stok `#stockBadge` dengan `if / else if / else` setiap varian berubah (tersedia / sisa sedikit / habis / tidak dikenal).
+  - Stepper `#quantityMinus` dan `#quantityPlus` dengan batas 1 sampai stok varian.
+  - Validasi submit berurutan dengan pesan di `#formMessage`; kalau gagal, footer bar disembunyikan dan listener berhenti (`return`).
+  - Info gratis ongkir (minimal Rp300.000) di `#shippingInfo` dengan `if / else`.
+  - Rincian per unit di `#unitList` dengan `for`; versi `while` ada sebagai komentar.
+- `product-1.html`, `product-3.html`, `index.html`
+  - Form baru: stepper, badge, pesan error, dan `novalidate` (validasi sekarang dari JavaScript).
+  - Footer bar: tambah `#unitList` dan `#shippingInfo`.
+  - Teks ongkir "£80" diganti "Gratis ongkir untuk belanja minimal Rp300.000". Stok tampilan product 1 dan 3 jadi 8 (angka latihan).
+  - Blok komentar stepper lama `TODO(Day 16)` dihapus karena sudah diganti.
+- `project-AI/script.js`: `productForm.dataset.stock = maxQuantity`; stok 0 mematikan select dan tombol submit. Komentar stepper lama dihapus, add to bag diberi label `TODO(nanti)`.
+- `project-AI/styles.css`: style stepper, badge (hijau/kuning/merah), pesan error, chip unit, info ongkir. Tinggi daftar unit dibatasi supaya footer bar tidak menutupi layar saat jumlahnya banyak.
+- `project-AI/frontend` (Vite): `stockLabel()` di `src/lib/product.js` (if / else if / else) dipakai di daftar dan detail produk, `.low-stock` di CSS, +1 test (6/6 lulus).
+- `api-product/`: tidak berubah.
