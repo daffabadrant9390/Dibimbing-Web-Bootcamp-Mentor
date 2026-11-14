@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Langkah Studio · Product Configurator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- @@ LANGKAH 2a · Navbar @@ -->
+  <header class="topbar">
+    <a class="brand" href="#produk">👟 Langkah <span>Studio</span></a>
+    <nav class="nav" id="siteNav" aria-label="Navigasi utama">
+      <a href="#produk" data-action="nav-link">Produk</a>
+      <a href="#detail" data-action="nav-link">Detail</a>
+      <a href="#ulasan" data-action="nav-link">Ulasan</a>
+      <a href="#rekomendasi" data-action="nav-link">Rekomendasi</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn theme-btn" data-action="theme" aria-pressed="false">🌙 Dark</button>
+      <button class="icon-btn cart-btn" data-action="cart-open" aria-label="Buka tas belanja">
+        🛍️ <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="icon-btn menu-btn" data-action="menu" aria-expanded="false" aria-controls="siteNav" aria-label="Buka menu">☰</button>
+    </div>
+  </header>
+
+  <!-- @@ LANGKAH 2b · Produk utama @@ -->
+  <main class="studio" id="produk">
+    <section class="stage" id="stage" aria-label="Pratinjau sepatu">
+      <div class="stage-tilt" id="stageTilt">
+        <svg class="shoe" id="shoe" viewBox="0 0 320 170" role="img" aria-label="Sepatu Langkah Pagi Runner">
+          <ellipse class="shoe-shadow" cx="160" cy="156" rx="130" ry="9" />
+          <path class="shoe-sole" d="M18 122 Q16 146 44 146 L280 146 Q304 146 302 124 L300 114 L20 114 Z" />
+          <path class="shoe-upper" d="M24 116 C24 86 52 74 86 70 L128 40 C140 31 154 31 164 41 L196 72 C232 78 274 88 294 104 Q302 110 300 116 Z" />
+          <path class="shoe-toe" d="M226 80 C258 86 284 94 294 104 Q302 110 300 116 L232 116 Z" />
+          <path class="shoe-stripe" d="M64 104 C118 98 176 82 238 96" />
+          <g class="shoe-laces">
+            <line x1="132" y1="50" x2="150" y2="62" />
+            <line x1="142" y1="58" x2="162" y2="70" />
+            <line x1="152" y1="66" x2="174" y2="78" />
+          </g>
+          <circle class="shoe-dot" cx="62" cy="86" r="5" />
+        </svg>
+      </div>
+      <p class="stage-caption" id="colorName">Sunset Orange</p>
+      <p class="stage-hint">Gerakkan mouse di atas sepatu ✨</p>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Produk unggulan · <a href="#ulasan" class="rating-link">★ 4,8 (126 ulasan)</a></p>
+      <h1>Langkah Pagi Runner</h1>
+      <p class="price" id="price">Rp549.000</p>
+
+      <div class="group">
+        <p class="label">Warna</p>
+        <div class="swatches" role="group" aria-label="Pilih warna">
+          <button class="swatch" data-action="color" data-color="sunset" style="--c:#E0743C" aria-label="Sunset Orange"></button>
+          <button class="swatch" data-action="color" data-color="ocean" style="--c:#2F7DD1" aria-label="Ocean Blue"></button>
+          <button class="swatch" data-action="color" data-color="matcha" style="--c:#5E9E5B" aria-label="Matcha Green"></button>
+          <button class="swatch" data-action="color" data-color="midnight" style="--c:#3A3F55" aria-label="Midnight Navy"></button>
+        </div>
+      </div>
+
+      <div class="group">
+        <p class="label">Ukuran <span class="stock-badge" id="stockBadge" hidden></span></p>
+        <div class="sizes" role="group" aria-label="Pilih ukuran">
+          <button class="size" data-action="size" data-size="39">39</button>
+          <button class="size" data-action="size" data-size="40">40</button>
+          <button class="size" data-action="size" data-size="41">41</button>
+          <button class="size" data-action="size" data-size="42">42</button>
+          <button class="size" data-action="size" data-size="43">43</button>
+        </div>
+      </div>
+
+      <div class="group row">
+        <div class="stepper" role="group" aria-label="Jumlah">
+          <button class="step-btn" data-action="qty-minus" aria-label="Kurangi">−</button>
+          <output id="qty" aria-live="polite">1</output>
+          <button class="step-btn" data-action="qty-plus" aria-label="Tambah">+</button>
+        </div>
+        <button class="wish-btn" data-action="wishlist" aria-pressed="false" aria-label="Simpan ke wishlist">♡</button>
+      </div>
+
+      <button class="add-btn" id="addBtn" data-action="add" data-status="idle">
+        <span class="add-label" id="addLabel">Pilih ukuran dulu</span>
+      </button>
+      <p class="hint" id="shipHint">Gratis ongkir mulai Rp1.000.000</p>
+    </section>
+  </main>
+
+  <!-- @@ LANGKAH 2c · Detail produk + ulasan @@ -->
+  <section class="section" id="detail">
+    <p class="eyebrow">Detail produk</p>
+    <h2>Dibuat buat jalan 10.000 langkah</h2>
+    <p class="lead">Langkah Pagi Runner adalah sepatu harian yang ringan dan adem. Cocok buat kuliah, kerja, sampai jalan sore keliling komplek. Dibuat di Bandung oleh pengrajin lokal.</p>
+    <div class="features">
+      <article class="feature"><span>🪶</span><h3>Ringan 230 gram</h3><p>Kaki nggak cepat capek walau dipakai seharian.</p></article>
+      <article class="feature"><span>🌬️</span><h3>Bahan mesh adem</h3><p>Sirkulasi udara lancar, kaki nggak gampang bau.</p></article>
+      <article class="feature"><span>☁️</span><h3>Sol empuk EVA</h3><p>Meredam benturan, enak buat jalan jauh.</p></article>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Panduan ukuran</summary>
+        <p>Ukur panjang kaki dari tumit ke ujung jari. 24,5 cm = 39 · 25 cm = 40 · 25,5 cm = 41 · 26,5 cm = 42 · 27 cm = 43. Kalau ragu, pilih setengah ukuran lebih besar.</p>
+      </details>
+      <details>
+        <summary>Cara merawat</summary>
+        <p>Cuci pakai sikat lembut dan sabun cair, jangan pakai mesin cuci. Keringkan di tempat teduh, bukan di bawah matahari langsung.</p>
+      </details>
+      <details>
+        <summary>Pengiriman &amp; retur</summary>
+        <p>Dikirim 1-2 hari kerja. Gratis ongkir mulai Rp1.000.000. Tukar ukuran gratis dalam 7 hari selama sepatu belum dipakai di luar.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="ulasan">
+    <p class="eyebrow">Ulasan pembeli</p>
+    <h2>Kata mereka yang udah pakai</h2>
+    <div class="reviews">
+      <div class="rating-card">
+        <p class="rating-big">4,8</p>
+        <p class="stars" aria-label="4,8 dari 5 bintang">★★★★★</p>
+        <p class="muted">dari 126 ulasan</p>
+        <ul class="rating-bars">
+          <li><span>5★</span><span class="bar"><span style="width:82%"></span></span><span>82%</span></li>
+          <li><span>4★</span><span class="bar"><span style="width:12%"></span></span><span>12%</span></li>
+          <li><span>3★</span><span class="bar"><span style="width:4%"></span></span><span>4%</span></li>
+          <li><span>2★</span><span class="bar"><span style="width:1%"></span></span><span>1%</span></li>
+          <li><span>1★</span><span class="bar"><span style="width:1%"></span></span><span>1%</span></li>
+        </ul>
+      </div>
+      <div class="review-list">
+        <article class="review">
+          <header><span class="avatar" style="--c:#2F7DD1">R</span><div><p class="name">Raka · Jakarta</p><p class="stars">★★★★★</p></div></header>
+          <p>“Dipakai jalan ke kantor tiap hari, kaki nggak pegel. Warna Ocean Blue aslinya lebih cakep dari fotonya.”</p>
+          <p class="muted">Ukuran 42 · Ocean Blue</p>
+        </article>
+        <article class="review">
+          <header><span class="avatar" style="--c:#5E9E5B">N</span><div><p class="name">Nadia · Bandung</p><p class="stars">★★★★★</p></div></header>
+          <p>“Ringan banget, kayak nggak pakai sepatu. Matcha Green-nya lucu buat outfit kuliah.”</p>
+          <p class="muted">Ukuran 39 · Matcha Green</p>
+        </article>
+        <article class="review">
+          <header><span class="avatar" style="--c:#E0743C">B</span><div><p class="name">Budi · Surabaya</p><p class="stars">★★★★☆</p></div></header>
+          <p>“Empuk dan adem. Cuma ukurannya agak kecil, saranku naik setengah nomor.”</p>
+          <p class="muted">Ukuran 43 · Sunset Orange</p>
+        </article>
+      </div>
+    </div>
+    <p class="note">Ulasan di halaman ini contoh fiktif untuk latihan.</p>
+  </section>
+
+  <!-- @@ LANGKAH 2d · Rekomendasi (carousel) @@ -->
+  <section class="section" id="rekomendasi">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Rekomendasi</p>
+        <h2>Kamu mungkin juga suka</h2>
+      </div>
+      <div class="reco-nav">
+        <button class="icon-btn" data-action="reco-prev" aria-label="Geser ke kiri">←</button>
+        <button class="icon-btn" data-action="reco-next" aria-label="Geser ke kanan">→</button>
+      </div>
+    </div>
+    <div class="reco-track" id="recoTrack" tabindex="0" aria-label="Produk rekomendasi, bisa digeser">
+      <article class="reco-card">
+        <svg class="mini-shoe" viewBox="0 0 320 170" aria-hidden="true" style="--c:#C2593A"><use href="#shoe-shape" /></svg>
+        <h3>Langkah Sore Walker</h3>
+        <p class="price-sm">Rp459.000</p>
+      </article>
+      <article class="reco-card">
+        <svg class="mini-shoe" viewBox="0 0 320 170" aria-hidden="true" style="--c:#4B5563"><use href="#shoe-shape" /></svg>
+        <h3>Langkah Kota Slip-on</h3>
+        <p class="price-sm">Rp399.000</p>
+      </article>
+      <article class="reco-card">
+        <svg class="mini-shoe" viewBox="0 0 320 170" aria-hidden="true" style="--c:#6B8E23"><use href="#shoe-shape" /></svg>
+        <h3>Langkah Trail Ringan</h3>
+        <p class="price-sm">Rp629.000</p>
+      </article>
+      <article class="reco-card">
+        <svg class="mini-shoe" viewBox="0 0 320 170" aria-hidden="true" style="--c:#8B5CF6"><use href="#shoe-shape" /></svg>
+        <h3>Langkah Kampus Classic</h3>
+        <p class="price-sm">Rp349.000</p>
+      </article>
+      <article class="reco-card">
+        <svg class="mini-shoe" viewBox="0 0 320 170" aria-hidden="true" style="--c:#0E9FB8"><use href="#shoe-shape" /></svg>
+        <h3>Langkah Hujan Pro</h3>
+        <p class="price-sm">Rp579.000</p>
+      </article>
+      <article class="reco-card">
+        <svg class="mini-shoe" viewBox="0 0 320 170" aria-hidden="true" style="--c:#D97706"><use href="#shoe-shape" /></svg>
+        <h3>Langkah Santai Sandal</h3>
+        <p class="price-sm">Rp199.000</p>
+      </article>
+      <article class="reco-card">
+        <svg class="mini-shoe" viewBox="0 0 320 170" aria-hidden="true" style="--c:#1F2937"><use href="#shoe-shape" /></svg>
+        <h3>Langkah Lari Malam</h3>
+        <p class="price-sm">Rp589.000</p>
+      </article>
+      <article class="reco-card">
+        <svg class="mini-shoe" viewBox="0 0 320 170" aria-hidden="true" style="--c:#EC4899"><use href="#shoe-shape" /></svg>
+        <h3>Langkah Anak Ceria</h3>
+        <p class="price-sm">Rp289.000</p>
+      </article>
+    </div>
+    <svg width="0" height="0" class="sprite" aria-hidden="true">
+      <symbol id="shoe-shape" viewBox="0 0 320 170">
+        <path d="M18 122 Q16 146 44 146 L280 146 Q304 146 302 124 L300 114 L20 114 Z" style="fill:#F4F1EC;stroke:#D9D2C7;stroke-width:2" />
+        <path d="M24 116 C24 86 52 74 86 70 L128 40 C140 31 154 31 164 41 L196 72 C232 78 274 88 294 104 Q302 110 300 116 Z" style="fill:var(--c)" />
+        <path d="M64 104 C118 98 176 82 238 96" style="fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round" />
+      </symbol>
+    </svg>
+  </section>
+
+  <!-- @@ LANGKAH 2e · Footer, drawer tas, toast @@ -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <p class="brand">👟 Langkah</p>
+        <p class="muted">Sepatu lokal buat jalan tiap hari. Dibuat di Bandung sejak 2019.</p>
+      </div>
+      <div>
+        <h3>Belanja</h3>
+        <a href="#produk">Pagi Runner</a>
+        <a href="#rekomendasi">Koleksi lain</a>
+        <a href="#detail">Panduan ukuran</a>
+      </div>
+      <div>
+        <h3>Bantuan</h3>
+        <a href="#detail">Pengiriman &amp; retur</a>
+        <a href="#ulasan">Ulasan</a>
+        <a href="#produk">Kontak</a>
+      </div>
+      <div>
+        <h3>Ikuti kami</h3>
+        <a href="#produk">Instagram</a>
+        <a href="#produk">TikTok</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Langkah · Website latihan Day 25 (bukan toko sungguhan)</p>
+  </footer>
+
+  <dialog class="drawer" id="cartDrawer" aria-labelledby="cartTitle">
+    <div class="drawer-head">
+      <h2 id="cartTitle">Tas kamu</h2>
+      <button class="icon-btn" data-action="cart-close" aria-label="Tutup tas">✕</button>
+    </div>
+    <div class="ship">
+      <p id="shipText">Belanja Rp1.000.000 lagi buat gratis ongkir</p>
+      <div class="ship-bar"><span id="shipBar"></span></div>
+    </div>
+    <ul class="cart-lines" id="cartLines"></ul>
+    <div class="drawer-foot">
+      <p>Total <strong id="cartTotal">Rp0</strong></p>
+    </div>
+  </dialog>
+
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
+</body>
+</html>
